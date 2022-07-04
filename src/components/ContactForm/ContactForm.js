@@ -1,5 +1,6 @@
-import s from './ContactForm.module.css';
 import React, { Component } from 'react';
+import { FormButton } from './ContactForm.syled';
+import { FormLable } from './ContactForm.syled';
 
 class ContactForm extends Component {
 	state = {
@@ -28,7 +29,7 @@ class ContactForm extends Component {
 	render() {
 		return (
 			<form onSubmit={this.addContact}>
-				<label className={s.form__label}>
+				<FormLable>
 					Name:
 					<input
 						value={this.state.name}
@@ -39,9 +40,9 @@ class ContactForm extends Component {
 						title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
 						required
 					/>
-				</label>
+				</FormLable>
 
-				<label className={s.form__label}>
+				<FormLable>
 					Tel:
 					<input
 						value={this.state.number}
@@ -52,10 +53,8 @@ class ContactForm extends Component {
 						title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
 						required
 					/>
-				</label>
-				<button className={s.form__button} type="submit">
-					Add contact
-				</button>
+				</FormLable>
+				<FormButton type="submit">Add contact</FormButton>
 			</form>
 		);
 	}

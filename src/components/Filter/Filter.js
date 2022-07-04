@@ -1,24 +1,22 @@
 import PropTypes from 'prop-types';
-import s from './Filter.module.css';
+import { FilterLable } from './Filter.styled';
+import { FilterInput } from './Filter.styled';
 
 const Filter = ({ value, onChange }) => (
-	<label className={s.filter__label}>
+	<FilterLable>
 		Find contacts by name
-		<input
-			className={s.filter__input}
+		<FilterInput
 			type="text"
 			value={value}
 			onChange={onChange}
 			placeholder="Name contact"
 		/>
-	</label>
+	</FilterLable>
 );
 
 Filter.propTypes = {
 	value: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
 };
-Filter.defaultProps = {
-	value: '',
-};
+
 export default Filter;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import s from './App.module.css';
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
+import { Box } from './Box';
 
 class App extends Component {
 	state = {
@@ -41,7 +41,6 @@ class App extends Component {
 
 	changeFilter = e => {
 		this.setState({ filter: e.currentTarget.value });
-		console.log(this.state);
 	};
 
 	getVisibleContacts = () => {
@@ -61,16 +60,18 @@ class App extends Component {
 	render() {
 		const visibleContacts = this.getVisibleContacts();
 		return (
-			<div>
-				<h1 className={s.title}>Phonebook</h1>
-				<ContactForm onSubmit={this.addContact} />
-				<h2 className={s.title}>Contacts </h2>
+			<Box display="flex" alignItems="center" flexDirection="column">
+				<Box>
+					<h1>Phonebook</h1>
+					<ContactForm onSubmit={this.addContact} />
+				</Box>
+				<h2>Contacts </h2>
 				<Filter value={this.filter} onChange={this.changeFilter} />
 				<ContactList
 					contacts={visibleContacts}
 					onDeleteContact={this.deleteContact}
 				/>
-			</div>
+			</Box>
 		);
 	}
 }
